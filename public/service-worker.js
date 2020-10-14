@@ -1,5 +1,11 @@
 const FILES_TO_CACHE = [
-
+    "./index.html",
+    "./index.js",
+    "./styles.css",
+    "./db.js",
+    "./manifest.json",
+    "./icons/icon-192x192.png",
+    "./icons/icon-512x512.png"
 ];
 
 const PRECACHE = "precache-v1";
@@ -31,7 +37,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-    if (event.request.url.startsWith(self.location.origin)) {
+    if (event.request.url.startsWith("/api")) {
         event.respondWith(
             caches.match(event.request).then((cachedResponse) => {
                 if (cachedResponse)
